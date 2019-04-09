@@ -1,6 +1,8 @@
 package com.example.assesment.model;
 
 import com.example.assesment.converter.RoleConverter;
+import com.example.assesment.model._enum.Role;
+
 import javax.persistence.*;
 import javax.validation.constraints.Size;
 import java.util.List;
@@ -37,6 +39,9 @@ public class User {
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "owner")
     private Set<Stock> portfolio;
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "owner")
+    private Set<Transaction> transactions;
 
     public Long getUserId() {
         return userId;
@@ -92,5 +97,13 @@ public class User {
 
     public void setPortfolio(Set<Stock> portfolio) {
         this.portfolio = portfolio;
+    }
+
+    public Set<Transaction> getTransactions() {
+        return transactions;
+    }
+
+    public void setTransactions(Set<Transaction> transactions) {
+        this.transactions = transactions;
     }
 }

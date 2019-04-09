@@ -1,10 +1,10 @@
 package com.example.assesment.service;
 
 import com.example.assesment.exception.CustomException;
-import com.example.assesment.model.Role;
+import com.example.assesment.model._enum.Role;
 import com.example.assesment.model.User;
 import com.example.assesment.repository.UserRepository;
-import com.example.assesment.security.JWTProvider;
+import com.example.assesment.security.jwt.JWTProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -75,8 +75,7 @@ public class UserService {
     }
 
     public User whoIs(HttpServletRequest req) {
-        return userRepository.findByEmail(jwtProvider.getEmail(jwtProvider.resolveToken(req)));
+        return this.search(jwtProvider.getEmail(jwtProvider.resolveToken(req)));
     }
 
 }
-

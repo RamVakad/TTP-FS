@@ -1,10 +1,8 @@
 package com.example.assesment;
 
-import com.example.assesment.model.Role;
-import com.example.assesment.model.Stock;
+import com.example.assesment.model._enum.Role;
 import com.example.assesment.model.User;
 import com.example.assesment.repository.UserRepository;
-import com.example.assesment.service.UserService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;

@@ -1,4 +1,4 @@
-package com.example.assesment.model;
+package com.example.assesment.model._enum;
 
 import org.springframework.security.core.GrantedAuthority;
 

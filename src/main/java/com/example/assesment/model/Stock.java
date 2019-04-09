@@ -20,9 +20,6 @@ public class Stock {
     @JoinColumn(name="USER_ID")
     private User owner;
 
-    @Column(name="BUY_PRICE", nullable = false)
-    private Double buyPrice;
-
     public Long getStockId() {
         return stockId;
     }
@@ -53,13 +50,5 @@ public class Stock {
 
     public void setOwner(User owner) {
         this.owner = owner;
-    }
-
-    public Double getBuyPrice() {
-        return buyPrice;
-    }
-
-    public void setBuyPrice(Double buyPrice) {
-        this.buyPrice = buyPrice;
     }
 }

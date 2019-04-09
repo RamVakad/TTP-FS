@@ -1,6 +1,6 @@
 package com.example.assesment.converter;
 
-import com.example.assesment.model.Role;
+import com.example.assesment.model._enum.Role;
 
 import javax.persistence.AttributeConverter;
 import javax.persistence.Converter;

@@ -1,7 +1,7 @@
 package com.example.assesment.controller;
 
-import com.example.assesment.dto.stock.StockDTO;
-import com.example.assesment.service.StockService;
+import com.example.assesment.dto.transaction.TransactionDTO;
+import com.example.assesment.service.TransactionService;
 import com.example.assesment.service.UserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -19,29 +19,29 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping("/api/stocks")
-@Api(tags = "stocks")
-public class StockController {
+@RequestMapping("/api/transactions")
+@Api(tags = "transactions")
+public class TransactionController {
 
     @Autowired
     private UserService userService;
 
     @Autowired
-    private StockService stockService;
+    private TransactionService transactionService;
 
     @Autowired
     private ModelMapper modelMapper;
 
-    @GetMapping(value = "/myPortfolio")
+    @GetMapping(value = "/myTransactions")
     @PreAuthorize("hasRole('ROLE_USER')")
-    @ApiOperation(value = "Return's the current user's portfolio.")
+    @ApiOperation(value = "Return's all of the current user's transactions.")
     @ApiResponses(value = {//
             @ApiResponse(code = 400, message = "Something went wrong"), //
             @ApiResponse(code = 403, message = "Access denied"), //
             @ApiResponse(code = 500, message = "Expired or invalid JWT token")})
-    public List<StockDTO> getMyPortfolio(HttpServletRequest req) {
-        return stockService.getPortfolio(userService.whoIs(req))
-                .stream().map(stock -> modelMapper.map(stock, StockDTO.class))
+    public List<TransactionDTO> getMyTransactions(HttpServletRequest req) {
+        return transactionService.getAllTransactions(userService.whoIs(req))
+                .stream().map(transaction -> modelMapper.map(transaction, TransactionDTO.class))
                 .collect(Collectors.toList());
     }
 

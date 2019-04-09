@@ -1,4 +1,4 @@
-package com.example.assesment.security;
+package com.example.assesment.security.jwt;
 
 import java.io.IOException;
 

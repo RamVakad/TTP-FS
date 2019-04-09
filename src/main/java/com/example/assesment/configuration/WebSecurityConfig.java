@@ -1,7 +1,7 @@
 package com.example.assesment.configuration;
 
-import com.example.assesment.security.JWTFilterConfig;
-import com.example.assesment.security.JWTProvider;
+import com.example.assesment.security.jwt.JWTFilterConfig;
+import com.example.assesment.security.jwt.JWTProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

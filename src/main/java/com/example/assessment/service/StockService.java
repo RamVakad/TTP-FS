@@ -18,7 +18,13 @@ import java.util.List;
 
 
 //TODO: Logging
-//TODO: Critical Code Needs To Be Fault Safe
+//TODO: Critical Code Needs To Be Fault Safe (Buying/Selling)
+//      Session session = sessionFactory.openSession();
+//      Transaction tx = session.beginTransaction();
+//      session.save(user); session.save(stock); session.save(txn);
+//      tx.commit();
+//      session.close();
+
 
 @Service
 public class StockService {

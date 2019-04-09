@@ -1,6 +1,6 @@
 package com.example.assesment.dto.user;
 
-import com.example.assesment.model.Stock;
+import com.example.assesment.dto.stock.StockDTO;
 import com.example.assesment.model._enum.Role;
 import io.swagger.annotations.ApiModelProperty;
 
@@ -20,7 +20,7 @@ public class FullDetailsDTO {
     @ApiModelProperty(position = 4)
     private List<Role> roles;
     @ApiModelProperty(position = 5)
-    private Set<Stock> portfolio;
+    private Set<StockDTO> portfolio;
 
     public Long getUserId() {
         return userId;
@@ -62,11 +62,11 @@ public class FullDetailsDTO {
         this.roles = roles;
     }
 
-    public Set<Stock> getPortfolio() {
+    public Set<StockDTO> getPortfolio() {
         return portfolio;
     }
 
-    public void setPortfolio(Set<Stock> portfolio) {
+    public void setPortfolio(Set<StockDTO> portfolio) {
         this.portfolio = portfolio;
     }
 }

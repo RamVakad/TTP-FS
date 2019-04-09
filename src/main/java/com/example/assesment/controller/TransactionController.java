@@ -27,7 +27,7 @@ public class TransactionController {
     private UserService userService;
 
     @Autowired
-    private TransactionService transactionService;
+    private TransactionService txnService;
 
     @Autowired
     private ModelMapper modelMapper;
@@ -38,9 +38,10 @@ public class TransactionController {
     @ApiResponses(value = {//
             @ApiResponse(code = 400, message = "Something went wrong"), //
             @ApiResponse(code = 403, message = "Access denied"), //
-            @ApiResponse(code = 500, message = "Expired or invalid JWT token")})
+            @ApiResponse(code = 403, message = "Expired or invalid JWT token"),//
+            @ApiResponse(code = 404, message = "The user doesn't exist") })
     public List<TransactionDTO> getMyTransactions(HttpServletRequest req) {
-        return transactionService.getAllTransactions(userService.whoIs(req))
+        return txnService.getAllTransactions(userService.whoIs(req))
                 .stream().map(transaction -> modelMapper.map(transaction, TransactionDTO.class))
                 .collect(Collectors.toList());
     }

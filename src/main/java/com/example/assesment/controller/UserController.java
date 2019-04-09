@@ -46,14 +46,14 @@ public class UserController {
     }
 
 
-
     @GetMapping(value = "/me")
     @PreAuthorize("hasRole('ROLE_USER')")
     @ApiOperation(value = "Return's the current user details.")
     @ApiResponses(value = {//
             @ApiResponse(code = 400, message = "Something went wrong"), //
             @ApiResponse(code = 403, message = "Access denied"), //
-            @ApiResponse(code = 403, message = "Expired or invalid JWT token")})
+            @ApiResponse(code = 403, message = "Expired or invalid JWT token"),//
+            @ApiResponse(code = 404, message = "The user doesn't exist") })
     public MyDetailsDTO getMyDetails(HttpServletRequest req) {
         return modelMapper.map(userService.whoIs(req), MyDetailsDTO.class);
     }

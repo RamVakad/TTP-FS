@@ -3,6 +3,8 @@ package com.example.assesment.dto.transaction;
 import com.example.assesment.model._enum.TxnType;
 import io.swagger.annotations.ApiModelProperty;
 
+import java.math.BigDecimal;
+
 public class TransactionDTO {
 
     @ApiModelProperty(position = 0)
@@ -21,7 +23,7 @@ public class TransactionDTO {
     private Integer amount;
 
     @ApiModelProperty(position = 5)
-    private Double price;
+    private BigDecimal price;
 
     public Long getTransactionId() {
         return transactionId;
@@ -63,11 +65,11 @@ public class TransactionDTO {
         this.amount = amount;
     }
 
-    public Double getPrice() {
+    public BigDecimal getPrice() {
         return price;
     }
 
-    public void setPrice(Double price) {
+    public void setPrice(BigDecimal price) {
         this.price = price;
     }
 }

@@ -5,6 +5,7 @@ import com.example.assesment.model._enum.Role;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.Set;
 
@@ -31,7 +32,7 @@ public class User {
     private String password;
 
     @Column(name="BALANCE", nullable = false)
-    private Double balance;
+    private BigDecimal balance;
 
     @ElementCollection(fetch = FetchType.EAGER)
     @Convert( converter = RoleConverter.class )
@@ -75,11 +76,11 @@ public class User {
         this.password = password;
     }
 
-    public Double getBalance() {
+    public BigDecimal getBalance() {
         return balance;
     }
 
-    public void setBalance(Double balance) {
+    public void setBalance(BigDecimal balance) {
         this.balance = balance;
     }
 

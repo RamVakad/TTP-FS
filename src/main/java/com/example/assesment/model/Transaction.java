@@ -5,6 +5,7 @@ import com.example.assesment.converter.TxnTypeConverter;
 import com.example.assesment.model._enum.TxnType;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 
 @Entity
 @Table(name = "USER_TRANSACTION")
@@ -29,7 +30,7 @@ public class Transaction {
     private Integer amount;
 
     @Column(name="PRICE", nullable = false)
-    private Double price;
+    private BigDecimal price;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="USER_ID")
@@ -75,11 +76,11 @@ public class Transaction {
         this.amount = amount;
     }
 
-    public Double getPrice() {
+    public BigDecimal getPrice() {
         return price;
     }
 
-    public void setPrice(Double price) {
+    public void setPrice(BigDecimal price) {
         this.price = price;
     }
 

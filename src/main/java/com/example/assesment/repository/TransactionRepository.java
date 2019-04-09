@@ -8,5 +8,5 @@ import java.util.List;
 
 
 public interface TransactionRepository extends JpaRepository<Transaction, Long> {
-    List<Transaction> findByOwnerEquals(User owner);
+    List<Transaction> findByOwnerEquals(User owner); //TODO: Implement pageable interface.
 }

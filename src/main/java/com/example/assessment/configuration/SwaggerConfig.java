@@ -14,6 +14,10 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 import java.util.*;
 
+/*
+    Swagger Configuration for API Documentation.
+ */
+
 @Configuration
 @EnableSwagger2
 public class SwaggerConfig {
@@ -31,13 +35,15 @@ public class SwaggerConfig {
                 .securityContexts(Collections.singletonList(securityContext()))
                 .tags(new Tag("users", "Operations about users"))
                 .tags(new Tag("stocks", "Operations about stocks"))
+                .tags(new Tag("transactions", "Operations about transactions"))
                 .genericModelSubstitutes(Optional.class);
     }
+
 
     private ApiInfo metadata() {
         return new ApiInfoBuilder()//
                 .title("Fullstack Assessment API")
-                .description("This is a the back-end service for the Fullstack Assessment application. It uses JWT for authentication & role management. Default Credentials: `user@email.com` or `admin@email.com`  (passwords are 'password') for testing purposes. Once you have successfully logged in and obtained the JWT, you should click on the right top button `Authorize` and introduce it with the prefix \"Bearer \".")
+                .description("This is a the back-end service for the Fullstack Assessment application. It uses JWT for authentication & role management. Default Credentials: `user@email.com` or `user2@email.com`  (passwords are 'password') for testing purposes. user2 is an Administrator. Once you have successfully logged in and obtained the JWT, you should click on the right top button `Authorize` and introduce it with the prefix \"Bearer \".")
                 .version("1.0.0")
                 .contact(new Contact(null, null, "RamVakad@gmail.com"))
                 .build();

@@ -34,6 +34,10 @@ public class UserService {
     @Autowired
     private AuthenticationManager authenticationManager;
 
+
+    /*
+        Authenticate User & Return Token
+     */
     public String signIn(String email, String password) {
         try {
             authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(email, password));
@@ -43,6 +47,9 @@ public class UserService {
         }
     }
 
+    /*
+        Create User & Return Token
+     */
     public String signUp(User user) {
         //Check for valid email.
         String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-z A-Z]{2,7}$";
@@ -63,15 +70,24 @@ public class UserService {
         }
     }
 
+    /*
+        Make a user an admin.
+     */
     public void makeAdmin(User user) {
         user.getRoles().add(Role.ROLE_ADMIN);
         userRepository.save(user);
     }
 
+    /*
+        Delete a user.
+     */
     public void delete(String email) {
         userRepository.deleteByEmail(email);
     }
 
+    /*
+        Search for a user using email
+     */
     public User search(String email) {
         User user = userRepository.findByEmail(email);
         if (user == null) {
@@ -80,6 +96,19 @@ public class UserService {
         return user;
     }
 
+    public void deductBalance(User user, BigDecimal x) {
+        user.setBalance(user.getBalance().subtract(x));
+        userRepository.save(user);
+    }
+
+    public void addBalance(User user, BigDecimal x) {
+        user.setBalance(user.getBalance().add(x));
+        userRepository.save(user);
+    }
+
+    /*
+        Resolve user using the HTTP request.
+     */
     public User whoIs(HttpServletRequest req) {
         return this.search(jwtProvider.getEmail(jwtProvider.resolveToken(req)));
     }

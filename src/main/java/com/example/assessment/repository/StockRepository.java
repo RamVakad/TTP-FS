@@ -8,5 +8,6 @@ import java.util.List;
 
 
 public interface StockRepository extends JpaRepository<Stock, Long> {
-    List<Stock> findAllByOwnerEquals(User owner);
+    List<Stock> findByOwnerEquals(User owner);
+    Stock findByOwnerEqualsAndTickerEquals(User owner, String ticket);
 }

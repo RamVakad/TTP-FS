@@ -1,4 +1,4 @@
-package com.example.assessment.configuration;
+package com.example.assessment.security;
 
 import com.example.assessment.security.jwt.JWTFilterConfig;
 import com.example.assessment.security.jwt.JWTProvider;
@@ -15,9 +15,13 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+/*
+    Endpoint Protection Configuration, Applying JWT Authentication, Password Encryption Bean
+*/
+
 @Configuration
 @EnableGlobalMethodSecurity(prePostEnabled = true)
-public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
+public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     private JWTProvider jwtProvider;
@@ -49,7 +53,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         httpSecurity.apply(new JWTFilterConfig(jwtProvider));
 
         // Optional, if you want to test the API from a browser
-        httpSecurity.httpBasic();
+        // httpSecurity.httpBasic();
         // httpSecurity.requiresChannel().anyRequest().requiresSecure(); //HTTPS only
     }
 

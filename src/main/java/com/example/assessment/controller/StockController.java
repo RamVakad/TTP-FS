@@ -54,5 +54,18 @@ public class StockController {
         return stockService.buyStock(userService.whoIs(req), order);
     }
 
+    @PostMapping("/sell")
+    @PreAuthorize("hasRole('ROLE_USER')")
+    @ApiOperation(value = "Sell a stock, returns true on success.")
+    @ApiResponses(value = {//
+            @ApiResponse(code = 400, message = "Something went wrong"), //
+            @ApiResponse(code = 403, message = "Access denied"), //
+            @ApiResponse(code = 403, message = "Expired or invalid JWT token"),//
+            @ApiResponse(code = 404, message = "The user doesn't exist"),//
+            @ApiResponse(code = 422, message = "Insufficient Shares" )})
+    public boolean sellStock(HttpServletRequest req, @ApiParam("Order") @RequestBody OrderDTO order) {
+        return stockService.sellStock(userService.whoIs(req), order);
+    }
+
 
 }

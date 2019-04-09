@@ -35,15 +35,6 @@ public class AssessmentApplication implements CommandLineRunner {
 		return new ModelMapper();
 	}
 
-	@Autowired
-	private PasswordEncoder passwordEncoder;
-
-	@Autowired
-	private UserService userService;
-
-	@Autowired
-	private StockService stockService;
-
 	public static void main(String[] args) {
 		SpringApplication.run(AssessmentApplication.class, args);
 	}
@@ -51,6 +42,14 @@ public class AssessmentApplication implements CommandLineRunner {
 	/*
 		Test data injection.
 	 */
+
+	@Autowired
+	private UserService userService;
+
+	@Autowired
+	private StockService stockService;
+
+
 	@Override
 	public void run(String... params) {
 		//Initiate DB with two test users, one admin and one user.
@@ -64,7 +63,7 @@ public class AssessmentApplication implements CommandLineRunner {
 		User user2 = new User();
 		user2.setName("John Doe");
 		user2.setEmail("user2@email.com");
-		user2.setPassword(passwordEncoder.encode("password"));
+		user2.setPassword("password");
 		userService.signUp(user2);
 		userService.makeAdmin(user2); //Make user2 an admin.
 

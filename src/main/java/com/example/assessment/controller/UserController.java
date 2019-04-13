@@ -2,6 +2,7 @@ package com.example.assessment.controller;
 
 import com.example.assessment.dto.user.FullDetailsDTO;
 import com.example.assessment.dto.user.MyDetailsDTO;
+import com.example.assessment.dto.user.UserSignInDTO;
 import com.example.assessment.dto.user.UserSignUpDTO;
 import com.example.assessment.model.User;
 import com.example.assessment.service.UserService;
@@ -29,18 +30,15 @@ public class UserController {
     @ApiResponses(value = {//
             @ApiResponse(code = 400, message = "Something went wrong"),
             @ApiResponse(code = 422, message = "Invalid username/password supplied")})
-    public String signIn(
-                        @ApiParam("Email") @RequestParam String email, //
-                        @ApiParam("Password") @RequestParam String password) {
-        return userService.signIn(email, password);
+    public String signIn(@ApiParam("Credentials") @RequestBody UserSignInDTO user) {
+        return userService.signIn(user.getEmail(), user.getPassword());
     }
 
     @PostMapping("/signUp")
     @ApiOperation(value = "Creates user and returns a JWT token")
     @ApiResponses(value = {//
             @ApiResponse(code = 400, message = "Something went wrong"),
-            @ApiResponse(code = 422, message = "Email is already in use"),
-            @ApiResponse(code = 422, message = "Invalid email provided")})
+            @ApiResponse(code = 422, message = "Invalid email provided/Invalid Email Prov ided")})
     public String newUser(@ApiParam("New User") @RequestBody UserSignUpDTO user) {
         return userService.signUp(modelMapper.map(user, User.class));
     }

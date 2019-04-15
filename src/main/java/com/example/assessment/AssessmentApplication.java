@@ -52,6 +52,7 @@ public class AssessmentApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... params) {
+		/*
 		//Initiate DB with two test users, one admin and one user.
 		User user = new User();
 		user.setName("Jane Doe");
@@ -83,6 +84,8 @@ public class AssessmentApplication implements CommandLineRunner {
 
 		//Make user 2 buy the facebook stock.
 		stockService.buyStock(user2, fbOrder);
+
+		 */
 	}
 
 }

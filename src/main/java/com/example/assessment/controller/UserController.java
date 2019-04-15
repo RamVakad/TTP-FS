@@ -38,7 +38,7 @@ public class UserController {
     @ApiOperation(value = "Creates user and returns a JWT token")
     @ApiResponses(value = {//
             @ApiResponse(code = 400, message = "Something went wrong"),
-            @ApiResponse(code = 422, message = "Invalid email provided/Invalid Email Prov ided")})
+            @ApiResponse(code = 422, message = "Invalid email provided/Invalid Email Provided")})
     public String newUser(@ApiParam("New User") @RequestBody UserSignUpDTO user) {
         return userService.signUp(modelMapper.map(user, User.class));
     }
@@ -49,8 +49,7 @@ public class UserController {
     @ApiOperation(value = "Return's the current user details.")
     @ApiResponses(value = {//
             @ApiResponse(code = 400, message = "Something went wrong"), //
-            @ApiResponse(code = 403, message = "Access denied"), //
-            @ApiResponse(code = 403, message = "Expired or invalid JWT token"),//
+            @ApiResponse(code = 403, message = "Access denied/Expired or invalid JWT token"), //
             @ApiResponse(code = 404, message = "The user doesn't exist") })
     public MyDetailsDTO getMyDetails(HttpServletRequest req) {
         return modelMapper.map(userService.whoIs(req), MyDetailsDTO.class);

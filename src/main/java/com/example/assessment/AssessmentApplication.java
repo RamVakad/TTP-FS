@@ -1,18 +1,17 @@
 package com.example.assessment;
 
-import com.example.assessment.dto.stock.OrderDTO;
-import com.example.assessment.model.User;
 import com.example.assessment.service.StockService;
 import com.example.assessment.service.UserService;
+import org.hibernate.SessionFactory;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
-import org.springframework.security.crypto.password.PasswordEncoder;
 
 import javax.annotation.PostConstruct;
+import javax.persistence.EntityManagerFactory;
 import java.util.*;
 
 @SpringBootApplication

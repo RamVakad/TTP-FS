@@ -27,7 +27,7 @@ public class TransactionService {
     /*
         Creates a record of transaction.
      */
-    public void createTxnRecord(TxnType type, User user, String ticker, BigDecimal price, Integer amount) {
+    public void saveTxnRecord(TxnType type, User user, String ticker, BigDecimal price, Integer amount) {
         Transaction txn = new Transaction();
         txn.setType(type);
         txn.setOwner(user);
@@ -36,5 +36,16 @@ public class TransactionService {
         txn.setAmount(amount);
         txn.setDate(System.currentTimeMillis());
         transactionRepository.save(txn);
+    }
+
+    public Transaction createTxnRecord(TxnType type, User user, String ticker, BigDecimal price, Integer amount) {
+        Transaction txn = new Transaction();
+        txn.setType(type);
+        txn.setOwner(user);
+        txn.setTicker(ticker);
+        txn.setPrice(price);
+        txn.setAmount(amount);
+        txn.setDate(System.currentTimeMillis());
+        return txn;
     }
 }
